@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Container, Row, Col, Spinner } from "react-bootstrap";
 import axios from "axios";
 import "./App.css";
+import logoImage from './assets/logo192.png';
+import kiranLogo from './assets/kiran_logo.png';
 
 const App = () => {
   const [city, setCity] = useState("");
@@ -17,7 +19,7 @@ const App = () => {
     const getBengaluruWeather = async () => {
       try {
         const weather = await axios.get(
-          `http://api.openweathermap.org/data/2.5/weather?q=Bengaluru&appid=ce496a1edaf9f933742ece6ea52aad64&units=metric`
+          `https://api.openweathermap.org/data/2.5/weather?q=Bengaluru&appid=ce496a1edaf9f933742ece6ea52aad64&units=metric`
         );
         setWeather(weather.data);
         const image = await axios.get(
@@ -41,7 +43,7 @@ const App = () => {
     setLoading(true);
     try {
       const weather = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ce496a1edaf9f933742ece6ea52aad64&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ce496a1edaf9f933742ece6ea52aad64&units=metric`
       );
       setWeather(weather.data);
       const image = await axios.get(
@@ -69,8 +71,13 @@ const App = () => {
       <Row>
         <Col xs={12} md={12}>
           <h1 className="text-center">
-            <img className="logo-image" src={"/logo192.png"} alt="Logo Image" />
-            &nbsp;Weather Forecast
+            <img 
+              className="logo-image" 
+              src={logoImage} 
+              alt="Logo Image" 
+              style={{ width: '40px', height: '40px', marginRight: '10px' }}
+            />
+            Weather Forecast
           </h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail">
@@ -131,7 +138,7 @@ const App = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-text">
-          Made with <img src="./kiran_logo.png" alt="Kiran Raj" className="footer-logo" /> by Kiran Raj . R
+          Made with <img src={kiranLogo} alt="Kiran Raj" className="footer-logo" /> by Kiran Raj . R
         </div>
         <div className="social-links">
           <a href="https://github.com/0803860" target="_blank" rel="noopener noreferrer" className="social-link">
